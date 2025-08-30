@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-/* RESET DE ESTILOS */
+/* =======================
+   RESET DE ESTILOS
+======================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
+/* =======================
+   BODY
+======================= */
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #360033, #0b8793);
@@ -15,42 +19,133 @@ body {
     line-height: 1.6;
 }
 
-/* HEADER */
+/* =======================
+   HEADER RESPONSIVO FLOUTANTE
+======================= */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 50px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    z-index: 10000;
-    backdrop-filter: blur(10px);
+    width: 100%;
 }
 
-nav ul {
+/* =======================
+   MENU DESKTOP FLOUTANTE
+======================= */
+.nav-menu {
     display: flex;
-    list-style: none;
     gap: 20px;
 }
 
-nav ul li a {
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-menu ul li a {
     text-decoration: none;
-    color: white;
-    font-size: 1.1rem;
+    color: #fff;
     font-weight: bold;
-    transition: color 0.3s ease;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
 }
 
-nav ul li a:hover {
+.nav-menu ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #00fff0;
+    transition: width 0.3s ease;
+}
+
+.nav-menu ul li a:hover::after {
+    width: 100%;
+}
+
+.nav-menu ul li a:hover {
     color: #00fff0;
+    transform: translateY(-3px);
 }
 
-/* CONTAINER PRINCIPAL */
+/* =======================
+   Ícone do menu mobile
+======================= */
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.menu-icon span {
+    display: block;
+    height: 4px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* =======================
+   MENU MOBILE
+======================= */
+@media (max-width: 768px) {
+    .menu-icon { display: flex; }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0,0.85);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+        z-index: 9999;
+    }
+
+    .nav-menu.active { transform: translateY(0); }
+
+    .nav-menu ul { flex-direction: column; gap: 30px; text-align: center; }
+
+    .menu-icon.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .menu-icon.active span:nth-child(2) { opacity: 0; }
+    .menu-icon.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+    .nav-menu ul li { opacity: 0; transform: translateY(-20px); animation: slideIn 0.4s forwards; }
+    .nav-menu.active ul li:nth-child(1) { animation-delay: 0.1s; }
+    .nav-menu.active ul li:nth-child(2) { animation-delay: 0.25s; }
+    .nav-menu.active ul li:nth-child(3) { animation-delay: 0.4s; }
+}
+
+/* =======================
+   CONTAINER PRINCIPAL
+======================= */
 .container {
     width: 90%;
     max-width: 1000px;
@@ -59,7 +154,9 @@ nav ul li a:hover {
     text-align: center;
 }
 
-/* FOTO E BALÃO */
+/* =======================
+   FOTO E BALÃO
+======================= */
 .foto-container {
     position: relative;
     display: inline-block;
@@ -88,99 +185,79 @@ nav ul li a:hover {
     font-size: 14px;
 }
 
-/* TÍTULO */
-h2 {
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
+/* =======================
+   TITULOS E PARAGRAFOS
+======================= */
+h2 { font-size: 2.5rem; color: #fff; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+h3 { font-size: 1.8rem; margin-top: 40px; color: #fff; margin-bottom: 20px; }
+p { font-size: 1.1rem; color: #ddd; max-width: 800px; margin: 0 auto 20px auto; line-height: 1.8; }
 
-/* PARÁGRAFOS */
-p {
-    font-size: 1.1rem;
-    color: #ddd;
-    max-width: 800px;
-    margin: 0 auto 20px auto;
-    line-height: 1.8;
-}
-
-/* LISTA DE TECNOLOGIAS */
-ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-bottom: 30px;
-}
-
-ul li {
-    font-size: 1.2rem;
-    margin: 8px 0;
-    color: #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-ul li strong {
-    font-weight: 600;
-    margin-left: 10px;
-    color: #b899c4;
-}
-
-/* LINKS SOCIAIS */
-.links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.links a {
-    display: inline-block;
-    background-color: transparent;
-    padding: 12px;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out;
-}
-
-.links img {
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s ease;
-}
-
-.links a:hover img {
-    transform: scale(1.2);
-}
-
-/* FOOTER */
-footer {
+/* =======================
+   GRID DE TECNOLOGIAS
+======================= */
+.tecnologias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    margin: 30px 0 50px 0;
     text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    font-size: 0.9rem;
-    color: #ccc;
 }
 
-/* RESPONSIVIDADE */
+.tecnologias div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.tecnologias div span {
+    display: inline-block;
+    transition: transform 0.3s ease, filter 0.3s ease, color 0.3s ease;
+}
+
+.tecnologias i {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.tecnologias div:hover span {
+    transform: scale(1.2) rotate(-10deg);
+    color: #00fff0;
+    filter: drop-shadow(0 4px 10px rgba(0, 255, 240, 0.5));
+}
+
+.tecnologias p {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* =======================
+   LINKS SOCIAIS
+======================= */
+.links { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
+.links a { display: inline-block; background-color: transparent; padding: 12px; border-radius: 50%; transition: transform 0.3s ease-in-out; }
+.links img { width: 40px; height: 40px; transition: transform 0.3s ease; }
+.links a:hover img { transform: scale(1.2); }
+
+/* =======================
+   FOOTER
+======================= */
+footer { text-align: center; margin-top: 40px; padding: 20px; font-size: 0.9rem; color: #ccc; }
+
+/* =======================
+   RESPONSIVIDADE
+======================= */
 @media (max-width: 768px) {
-    .container {
-        width: 95%;
-        padding: 90px 10px 30px;
-    }
-
-    .foto {
-        width: 150px;
-        height: 150px;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    ul li {
-        font-size: 1rem;
-    }
+    .container { width: 95%; padding: 90px 10px 30px; }
+    .foto { width: 150px; height: 150px; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    p { font-size: 1rem; }
+    .tecnologias { gap: 20px; }
+    .tecnologias i { font-size: 40px; }
 }
+
+/* =======================
+   ANIMAÇÃO SLIDEIN
+======================= */
+@keyframes slideIn { to { opacity: 1; transform: translateY(0); } }

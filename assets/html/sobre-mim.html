@@ -4,26 +4,36 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <title>Sobre Mim</title>
     <link rel="stylesheet" href="../css/sobre.css" />
 </head>
 
 <body>
+
+    <!-- HEADER FLOUTANTE -->
     <header>
         <div class="container">
 
-            <nav>
+            <!-- MENU DESKTOP/MOBILE -->
+            <div class="nav-menu">
                 <ul>
                     <li><a href="/index.html">Início</a></li>
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="./projetos.html">Projetos</a></li>
                 </ul>
-            </nav>
+            </div>
+
+            <!-- Ícone HAMBURGER MOBILE -->
+            <div class="menu-icon" id="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
-    
 
-    <section class="container">
+    <section class="container" id="sobre">
         <div class="foto-container">
             <img src="../images/662ff1e7-e939-44aa-9a09-f0aa84c3024c.jfif" alt="Minha Foto" class="foto" />
             <div class="balao">Desenvolvedor em Formação</div>
@@ -38,19 +48,23 @@
         <p>
             Iniciei minha jornada com HTML e CSS, aprendendo a estruturar e estilizar páginas.
             Em seguida, me aprofundei em JavaScript, compreendendo sua lógica e interatividade.
-            Atualmente estudo Analise e Desenvolvimento de Sistemas, o que tem me proporcionado uma base sólida
+            Atualmente estudo Análise e Desenvolvimento de Sistemas, o que tem me proporcionado uma base sólida
             em programação e desenvolvimento de software e
-            com o tempo que tenho,  exploro ferramentas e frameworks modernos como:
+            com o tempo que tenho, exploro ferramentas e frameworks modernos como:
         </p>
 
-        <ul>
-            <li>💡 <strong>TypeScript</strong> — Tipagem forte e segurança no JavaScript</li>
-            <li>⚛️ <strong>React</strong> — Criação de interfaces modernas e reativas</li>
-            <li>🎨 <strong>Bootstrap</strong> — Estilização rápida com responsividade</li>
-            <li>🌐 <strong>Node.js</strong> — Backend com JavaScript</li>
-            <li>🐍 <strong>Python</strong> — Versátil e poderoso</li>
-            <li>🔥 <strong>Flask</strong> — Framework web simples e leve com Python</li>
-        </ul>
+        <h3>Tecnologias que estou estudando:</h3>
+        <div class="tecnologias">
+            <div><span><i class="devicon-html5-plain colored"></i></span><p>HTML</p></div>
+            <div><span><i class="devicon-css3-plain colored"></i></span><p>CSS</p></div>
+            <div><span><i class="devicon-tailwindcss-plain colored"></i></span><p>Tailwind CSS</p></div>
+            <div><span><i class="devicon-typescript-plain colored"></i></span><p>TypeScript</p></div>
+            <div><span><i class="devicon-javascript-plain colored"></i></span><p>JavaScript</p></div>
+            <div><span><i class="devicon-react-original colored"></i></span><p>React</p></div>
+            <div><span><i class="devicon-bootstrap-plain colored"></i></span><p>Bootstrap</p></div>
+            <div><span><i class="devicon-nodejs-plain colored"></i></span><p>Node.js</p></div>
+            <div><span><i class="devicon-angularjs-plain colored"></i></span><p>Angular</p></div>
+        </div>
 
         <p>
             Meu objetivo é construir aplicações completas, do front-end ao back-end,
@@ -76,10 +90,20 @@
         </div>
     </section>
 
-    <footer style="text-align: center; margin-top: 20px;">
+    <footer>
         <p>Desenvolvedor em Formação</p>
         <p>&copy; 2025 Abraão Valois. Todos os direitos reservados.</p>
     </footer>
-</body>
 
+    <script>
+        // SCRIPT PARA MENU HAMBURGER MOBILE
+        const menuIcon = document.getElementById('menu-icon');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuIcon.classList.toggle('active');
+        });
+    </script>
+</body>
 </html>
